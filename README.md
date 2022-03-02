@@ -20,7 +20,7 @@ A Telegram Bot written in Python with Django Framework. Its main feature is to r
 
 Clone this repo
 
-- `git clone https://github.com/fvlgnn/omnia`
+- `git clone https://github.com/fvlgnn/telegram-answer-bot`
 
 
 ### Django (optional)
