@@ -68,7 +68,7 @@ Use only remake project. Not use with git clone.
 
 ### Self Hosting, Personal Cloud or VPS
 
-Read [https://github.com/fvlgnn/setup-django-web-server](https://github.com/fvlgnn/setup-django-web-server)
+For deploy on custom host read [https://github.com/fvlgnn/setup-django-web-server](https://github.com/fvlgnn/setup-django-web-server)
 
 
 ### Hosting
