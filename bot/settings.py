@@ -15,17 +15,24 @@ from pathlib import Path
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
+# ENVIRONMENT VARIABLE
+import os
+from dotenv import load_dotenv
+env_file = BASE_DIR / '.env'
+load_dotenv(dotenv_path=env_file)
+
+yep = ['true', '1', 't', 'y', 'yes', 'yep', 'ok', 'si', 'sì', 's', 'vero', 'vera', 'v', 'de', 'dè', 'j']
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/4.0/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-w&blmorah&$47tthd8=^axpx8w=t5eipfz55f-xqe(bl(m46%8'
+SECRET_KEY = os.getenv("SECRET_KEY")
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = os.getenv("DEBUG").lower() in yep
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = os.getenv('HOST').split(' ')
 
 
 # Application definition
@@ -37,6 +44,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'app'
 ]
 
 MIDDLEWARE = [
@@ -73,12 +81,26 @@ WSGI_APPLICATION = 'bot.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/4.0/ref/settings/#databases
 
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+if os.getenv("SQLITE_DB").lower() in yep:
+    # USING SQLITE DB
+    DATABASES = {
+        'default': {
+            'ENGINE': 'django.db.backends.sqlite3',
+            'NAME': BASE_DIR / 'db.sqlite3'
+        }
     }
-}
+else:
+    # USING POSTGRESQL DB
+    DATABASES = {
+        'default': {
+            'ENGINE': 'django.db.backends.postgresql_psycopg2',
+            'NAME': os.getenv("POSTGRESQL_NAME"),
+            'USER': os.getenv("POSTGRESQL_USER"),
+            'PASSWORD': os.getenv("POSTGRESQL_PASS"),
+            'HOST': os.getenv("POSTGRESQL_HOST"),
+            'PORT': os.getenv("POSTGRESQL_PORT")
+        }
+    }
 
 
 # Password validation
@@ -115,7 +137,9 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/4.0/howto/static-files/
 
-STATIC_URL = 'static/'
+STATIC_URL = '/static/'
+STATIC_ROOT = BASE_DIR / 'static'
+STATICFILES_DIRS = [BASE_DIR / 'assets']
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.0/ref/settings/#default-auto-field

@@ -37,6 +37,28 @@ Use only remake project. Not use with git clone.
 - `python manage.py createsuperuser`
 - `python manage.py collectstatic`
 
+
+## Configuration
+
+- Copy or Rename `.env.example.file.txt` file in `.env`
+- Edit `.env` file with your parameters
+
+
+### Environment Parameters Description (`.env` file content's)
+
+- `DEBUG` true/false be enable/disable debug mode
+- `TELEGRAM_BOT_API` is alphanumericals string released of Telegram [BotFather](https://core.telegram.org/bots#3-how-do-i-create-a-bot)
+- `SECRET_KEY` is alphanumericals string for django security
+- `HOST` list of allowed hosts or DNS domains separated by space
+- `SQLITE_DB` true use SQLite, false use PostgreSQL, in this case configure PostgreSQL parameters
+- If using PostgreSQL Database(`SQLITE_DB=false`)
+    - `POSTGRESQL_NAME` is database name
+    - `POSTGRESQL_USER` is username of database user enabled to use
+    - `POSTGRESQL_PASS` is passoword of user
+    - `POSTGRESQL_HOST` is database host name
+    - `POSTGRESQL_PORT` is database port 
+
+
 ## Debug / Develop
 
 - `python manage.py runserver`
@@ -53,3 +75,4 @@ Read [https://github.com/fvlgnn/setup-django-web-server](https://github.com/fvlg
 ### Hosting
 
 [Heroku](https://www.heroku.com/), [PythonAnyWhere](https://eu.pythonanywhere.com), [DigitalOcean](https://www.digitalocean.com/).
+
