@@ -73,5 +73,7 @@ Read [https://github.com/fvlgnn/setup-django-web-server](https://github.com/fvlg
 
 ### Hosting
 
-[Heroku](https://www.heroku.com/), [PythonAnyWhere](https://eu.pythonanywhere.com), [DigitalOcean](https://www.digitalocean.com/).
+Read the documentation of the chosen service .
+
+Advice [Heroku](https://www.heroku.com/), [PythonAnyWhere](https://eu.pythonanywhere.com), [DigitalOcean](https://www.digitalocean.com/).
 
