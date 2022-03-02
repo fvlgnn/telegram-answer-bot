@@ -1,3 +1,20 @@
+# Develop
+.vscode/
+migrations
+migrations/
+temp/
+logs/
+archivio/
+private
+test.py
+*.logs
+*.ffs_batch
+*.ffs_gui
+*.db
+*.sql
+*.sqlite3
+*..sqbpro
+
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[cod]
