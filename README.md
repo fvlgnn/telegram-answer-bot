@@ -14,7 +14,6 @@ A Telegram Bot written in Python with Django Framework. Its main feature is to r
 
 ## Project 
 
----
 
 ### Git
 
