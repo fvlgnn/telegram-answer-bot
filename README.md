@@ -17,23 +17,17 @@ A Telegram Bot written in Python with Django Framework. Its main feature is to r
 
 ### Git
 
-Clone this repo
+Clone this repo.
 
 - `git clone https://github.com/fvlgnn/telegram-answer-bot`
 
 
 ### Django (optional)
 
-Use only remake project. Not use with git clone.
+Use only remake project. Don't use with git clone.
 
 - `django-admin startproject bot .`
 - `python manage.py startapp app`
-
----
-
-- `python manage.py makemigrations`
-- `python manage.py migrate`
-- `python manage.py createsuperuser`
 - `python manage.py collectstatic`
 
 
@@ -46,7 +40,7 @@ Use only remake project. Not use with git clone.
 ### Environment Parameters Description (`.env` file content's)
 
 - `DEBUG` true/false be enable/disable debug mode
-- `TELEGRAM_BOT_API` is alphanumericals string released of Telegram [BotFather](https://core.telegram.org/bots#3-how-do-i-create-a-bot)
+- `TELEGRAM_BOT_TOKEN` is alphanumericals token released of Telegram [BotFather](https://core.telegram.org/bots#3-how-do-i-create-a-bot)
 - `SECRET_KEY` is alphanumericals string for django security
 - `HOST` list of allowed hosts or DNS domains separated by space
 - `SQLITE_DB` true use SQLite, false use PostgreSQL, in this case configure PostgreSQL parameters
@@ -58,9 +52,56 @@ Use only remake project. Not use with git clone.
     - `POSTGRESQL_PORT` is database port 
 
 
+### Create Admin Django
+
+- `python manage.py createsuperuser`
+
+
 ## Debug / Develop
 
+
+### Check code and database migration
+
+- `python manage.py makemigrations`
+- `python manage.py migrate`
+
+### Run Django Local Server
+
 - `python manage.py runserver`
+
+
+## Telegram Answer Bot Configuration
+
+- Visit Admin page [http://localhost:8000/telegram-answer-bot-admin/](http://localhost:8000/telegram-answer-bot-admin/) or https://your-domain.net/telegram-answer-bot-admin/
+- Using credential created by _manage.py createsuperuser_
+- Configure Keyword and Answer
+
+With Postman or other REST Client or by cURL, set the Telegram Bot for using [Webhooks](https://core.telegram.org/bots/api#setwebhook)
+
+
+### Set Webhook
+
+Method GET or POST `https://api.telegram.org/bot123456:ABC-DEF1234ghIkl-zyx57W2v1u123ew11/setWebhook?url=https://your-domain.net/telegram-answer-bot/webhook`
+
+**EDIT THIS:**
+
+- `bot123456:ABC-DEF1234ghIkl-zyx57W2v1u123ew11` is Telegram bot token api
+- `https://your-domain.net` is your domain with valid SSL certificate (HTTPS)
+
+
+If you haven't an HTTPS connection (with valid SSL certificate), must be created a self signed certificate and upload it on Telegram API Webhook.
+
+**Curl example (edit token, domain and file)** 
+
+```
+curl --location --request POST 'https://api.telegram.org/bot123456:ABC-DEF1234ghIkl-zyx57W2v1u123ew11/setWebhook' \
+--form 'url="https://your-domain.net/telegram-answer-bot/webhook"' \
+--form 'certificate=@"/path/to/self-sign-public-key-certificate-file"'
+```
+
+With Postman use method `POST` and `body` as `form-data` with keys `url` value and `certificate` file. 
+
+Read [https://core.telegram.org/bots/api#setwebhook](https://core.telegram.org/bots/api#setwebhook) and [https://core.telegram.org/bots/self-signed](https://core.telegram.org/bots/self-signed)
 
 
 ## Deploy
@@ -70,10 +111,19 @@ Use only remake project. Not use with git clone.
 
 For deploy on custom host read [https://github.com/fvlgnn/setup-django-web-server](https://github.com/fvlgnn/setup-django-web-server)
 
+It's very important that your host has an HTTPS connection (valid SSL encryption e.g. https://your-domain.net/) otherwise, a self-signed certificate must be created and used, view [Set Webhook](#set-webhook).
+
 
 ### Hosting
 
-Read the documentation of the chosen service .
+Read the documentation of the chosen service.
 
 Advice [Heroku](https://www.heroku.com/), [PythonAnyWhere](https://eu.pythonanywhere.com), [DigitalOcean](https://www.digitalocean.com/).
+
+
+----
+
+## TODO
+
+- [ ] Broadcast message send message by admin page using django signals (Environment `TELEGRAM_BOT_TOKEN` will be used for this)
 
