@@ -72,7 +72,7 @@ Use only remake project. Don't use with git clone.
 
 ## Telegram Answer Bot Configuration
 
-- Visit Admin page [http://localhost:8000/telegram-answer-bot-admin/](http://localhost:8000/telegram-answer-bot-admin/) or https://your-domain.net/telegram-answer-bot-admin/
+- Visit Admin page [http://127.0.0.1:8000/telegram-answer-bot-admin/](http://127.0.0.1:8000/telegram-answer-bot-admin/) or https://your-domain.net/telegram-answer-bot-admin/
 - Using credential created by _manage.py createsuperuser_
 - Configure Keyword and Answer
 
