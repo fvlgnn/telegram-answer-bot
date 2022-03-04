@@ -126,4 +126,5 @@ Advice [Heroku](https://www.heroku.com/), [PythonAnyWhere](https://eu.pythonanyw
 ## TODO
 
 - [ ] Send Broadcast message by Django Admin page, using django signals. Environment `TELEGRAM_BOT_TOKEN` will be used for this.
+- [ ] Add notification to ADMIN_CHAT_ID for important events.
 
