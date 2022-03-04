@@ -89,6 +89,10 @@ if os.getenv("SQLITE_DB").lower() in yep:
             'NAME': BASE_DIR / 'db.sqlite3'
         }
     }
+    #NOTE Heroku DB PostgreSQL (uncomment next 3 rows)
+    # import dj_database_url, django_heroku
+    # db_from_env = dj_database_url.config(conn_max_age=600)
+    # DATABASES['default'].update(db_from_env)
 else:
     # USING POSTGRESQL DB
     DATABASES = {
