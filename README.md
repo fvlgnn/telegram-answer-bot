@@ -42,7 +42,7 @@ Use only remake project. Don't use with git clone.
 - `DEBUG` true/false be enable/disable debug mode
 - `TELEGRAM_BOT_TOKEN` is alphanumericals token released of Telegram [BotFather](https://core.telegram.org/bots#3-how-do-i-create-a-bot)
 - `SECRET_KEY` is alphanumericals string for django security
-- `HOST` list of allowed hosts or DNS domains separated by space
+- `HOST` list of allowed hosts or DNS domains separated by space (Important `api.telegram.org`)
 - `SQLITE_DB` true use SQLite, false use PostgreSQL, in this case configure PostgreSQL parameters
 - If using PostgreSQL Database(`SQLITE_DB=false`)
     - `POSTGRESQL_NAME` is database name
